@@ -1,0 +1,6 @@
+github.com/arul-lm/triosim v0.0.0-20250424195249-09c061b85903 h1:gwgrt71grvIR1S92Q/H5IId74pkvWlMoTK5rZgYlERw=
+github.com/arul-lm/triosim v0.0.0-20250424195249-09c061b85903/go.mod h1:BlEMU5BQe/TMaEn1n2twfXeJMT616vQPvWcFTE3L1Rw=
+github.com/rs/xid v1.5.0 h1:mKX4bl4iPYJtEIxp6CYiUuLQ/8DYMoz0PUdtGgMFRVc=
+github.com/rs/xid v1.5.0/go.mod h1:trrq9SKmegXys3aeAKXMUTdJsYXVwGY3RLcfgqegfbg=
+gitlab.com/akita/akita/v3 v3.0.0-alpha.24 h1:YYDUquDouYEizWMeTzYAz2ln9cvUfUXAG09z/xtKNvw=
+gitlab.com/akita/akita/v3 v3.0.0-alpha.24/go.mod h1:0BcSSXaRHBPN8TUCZ6vddQsIUAK9oM+3+I8EqeWf76k=
