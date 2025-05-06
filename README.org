@@ -2,19 +2,21 @@
 This project tries to use TrioSim/Akita discrete event simulator framework to build optical network components
 
 ** Assessment of TrioSim
-|                        | TrioSim                           | Simpy(Ours)      | Preferred |
-|------------------------+-----------------------------------+------------------+-----------|
-| ML model supported     | Trace based(Primitive)            | Manually written | Neutral   |
-| Parallelism supported  | 1D(No Megatron/DeepSpeed)         | 4D or 5D         | Ours      |
-| Training/Inference     | Training. Easy to add inference   | Both             | Neutral   |
-| Comp Arch Components   | Ports, Links, Switch, Routers etc | XPUs and Links   | TrioSim   |
-| Optical Ntw Components | Waveguide (replaced)              | NA               | TrioSim   |
-| Scalability            | Faster                            | Slower           | TrioSim   |
-| Debuggability          | More granular                     | Less granular    | Neutral   |
-| Event Timeline viz     | DB based                          | Perfetto based   | Ours      |
 
-** Summary
-Akita/TrioSim - Good for modeling computer architecture. Needs work to target ML workloads.
-Ours - Good for targeting ML workloads with partitioning and less sophisticated for Network modeling.
+|                        | TrioSim                              | Simpy(Ours)      | Preferred |
+|------------------------+--------------------------------------+------------------+-----------|
+| ML model supported     | Trace based(Primitive)               | Manually written | Neutral   |
+| Parallelism supported  | 1D(No Megatron/DeepSpeed)            | 4D or 5D         | Ours      |
+| Training/Inference     | Training. Easy to add inference      | Both             | Neutral   |
+| Comp Arch Components   | Ports, Links, Switch, Routers etc    | XPUs and Links   | TrioSim   |
+| Optical Ntw Components | waveguide (replaced by direct links) | direct links     | TrioSim   |
+| Scalability            | Faster                               | Slower           | TrioSim   |
+| Debuggability          | More granular                        | Less granular    | Neutral   |
+| Event Timeline viz     | DB based                             | Perfetto based   | Ours      |
 
-TrioSim's decision to replace their on-the-fly waveguide setup with direct links significantly dampens our immediate interest to adopt their work.
+*** High Level Summary
+TrioSim is a discrete event level simulator built on top of Akita. This assessment is of both TrioSim and Akita.
+
+The TrioSim work primarily adds ML workload support and optical network support to Akita and models ML Training. TrioSim is good for modeling computer architecture as it provides several components (switches, memory, links) out of the box. It lacks serious ML workload support. The trace based support needs to apply 1D parallelism at a time. We need 5D parallelism support. With this, also comes the problem of workload partitioning. Their workload partitioning is unlike Megatron/DeepSpeed limited our ability to directly compare numbers with published benchmarks. TrioSim's decision to replace their on-the-fly waveguide setup with direct links significantly dampens our immediate interest to adopt their work.
+
+Our Simulator has better ML workload support but it's built on simpy which is simple and easy to use but will show problems when we need scale or high fidelity.
